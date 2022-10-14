@@ -42,7 +42,7 @@ export default function Musique({src, title, description}) {
                 </button>
             </div>
             {audioPlaying && (
-                <audio id="audio" controls autoPlay className="w-9/12 mt-5 fixed bottom-0 right-14 mb-8">
+                <audio id="audio" controls autoPlay className="w-9/12 mt-5 fixed bottom-0 right-0 left-0 ml-auto mr-auto mb-8">
                     <source src={src} type="audio/mpeg" />
                 </audio>
             )}
