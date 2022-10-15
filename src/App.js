@@ -4,6 +4,7 @@ import React from 'react';
 import Navbar from './composants/Navbar';
 import Profil from './composants/Profil';
 import fiverr from './assets/fiverr.svg';
+import instagram from './assets/insta-logo.png';
 import Musique from './composants/Musique';
 import maquette from './assets/musique/maquette.mp3';
 import maquette2 from './assets/musique/maquette2.mp3';
@@ -21,9 +22,12 @@ function App() {
         <Navbar />
       </header>
       <Profil/>
-      <div className='flex justify-end h-36 md:hidden'>
-        <a href="https://fr.fiverr.com/" className='p-3 h-14 w-14 rounded-full md:flex md:items-center md:bg-[#23395B] md:rounded-md md:mr-40 md:mt-5'>
+      <div className='flex justify-end h-36 md:hidden mt-3'>
+        <a href="https://fr.fiverr.com/" className='h-8 w-8 mr-3 rounded-full md:flex md:items-center md:bg-[#23395B] md:rounded-md md:mr-40 md:mt-5'>
           <img className='rounded-full border-4 border-solid border-slate-300 border-opacity-20 md:border-0' src={fiverr}/>
+        </a>
+        <a href="https://www.instagram.com/nateraki/?hl=fr" className='h-8 w-8 mr-5 rounded-full md:flex md:items-center md:bg-[#23395B] md:rounded-md md:mr-40 md:mt-5'>
+          <img className='rounded-full border-4 border-solid border-slate-300 border-opacity-20 md:border-0' src={instagram}/>
         </a>
       </div>
       <div className='hidden md:flex justify-end md:mt-10'>
