@@ -37,7 +37,7 @@ export default function Contact() {
                 <input className="appearance-none bg-transparent border-none w-full text-white mr-3 py-1 px-2 leading-tight focus:outline-none font-semibold" type="text" placeholder="Email *" aria-label="Full email" name="user_email" required="required"></input>
             </div>
             <div className="flex items-center border-b border-slate-300 py-2 mb-5">
-                <input className="appearance-none bg-transparent border-none w-full text-white mr-3 py-1 px-2 leading-tight focus:outline-none font-semibold" type="text" placeholder="Discord" aria-label="Full email" name="user_discord"></input>
+                <input className="appearance-none bg-transparent border-none w-full text-white mr-3 py-1 px-2 leading-tight focus:outline-none font-semibold" type="email" placeholder="Discord" aria-label="Full email" name="user_discord"></input>
             </div>
             <div className="flex items-center border-b border-slate-300 py-2 mb-5">
                 <textarea className="appearance-none bg-transparent border-none w-full text-white mr-3 py-1 px-2 leading-tight focus:outline-none font-semibold" rows="8" type="text" placeholder="Message" aria-label="Full message" name="user_message"></textarea>
