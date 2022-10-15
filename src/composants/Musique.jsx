@@ -12,9 +12,9 @@ export default function Musique({src, title, description, musiqueActuelle , setM
     }
 
     return(
-        <div className="bg-[#212E43] p-5 rounded-md w-4/5 mb-8">
+        <div className={`bg-[#212E43] p-5 rounded-md w-4/5 md:w-2/5 mb-8 md:mr-8  ${musiqueActuelle === src && "border-2 border-solid border-slate-300"}`}>
 
-            {musiqueActuelle == src ? (
+            {musiqueActuelle === src ? (
                 <div className="flex justify-end">
                     <button onClick={closeAudio}>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 text-sky-500">

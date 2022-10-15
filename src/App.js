@@ -44,7 +44,7 @@ function App() {
 
       <div id="projets" className='mx-9 md:mx-32 mb-5 md:mb-32'>
         <h2 className='text-xl md:text-3xl text-white font-bold separator-bottom relative pb-3 mb-5 md:mb-20'>Projets</h2>
-        <div className='flex flex-col items-center mt-12'>
+        <div className='flex flex-col md:flex-row items-center mt-12'>
           <Musique src={maquette} title="Mix1" description="mix1" musiqueActuelle={musiqueActuelle} setMusiqueActuelle={setMusiqueActuelle}/>
           <Musique src={maquette2} title="Mix2" description="mix2" musiqueActuelle={musiqueActuelle} setMusiqueActuelle={setMusiqueActuelle}/>
           <Musique src={maquette3} title="Mix3" description="mix3" musiqueActuelle={musiqueActuelle} setMusiqueActuelle={setMusiqueActuelle}/>
