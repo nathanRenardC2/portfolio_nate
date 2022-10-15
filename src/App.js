@@ -9,8 +9,12 @@ import maquette from './assets/musique/maquette.mp3';
 import maquette2 from './assets/musique/maquette2.mp3';
 import maquette3 from './assets/musique/maquette3.mp3';
 import Contact from './composants/Contact';
+import { useState } from "react";
 
 function App() {
+
+  const [musiqueActuelle, setMusiqueActuelle] = useState(null);
+
   return (
     <div className="bg-[#1E1E1E] h-full w-full">
       <header>
@@ -28,8 +32,8 @@ function App() {
           <span className='md:inline text-white font-extrabold ml-2'>Contact</span>
         </a>
       </div>
-      <div id="propos" className='mx-9 mb-5 md:mb-20 md:mt-20'>
-        <h2 className='text-xl text-white font-bold separator-bottom relative pb-3 mb-5'>A propos</h2>
+      <div id="propos" className='mx-9 md:mx-32 mb-5 md:mb-32 md:mt-20'>
+        <h2 className='text-xl md:text-3xl text-white font-bold separator-bottom relative pb-3 mb-5 md:mb-10'>A propos</h2>
         <p className='text-white text-opacity-70'>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
           Nulla vitae elit libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id elit.
@@ -38,21 +42,27 @@ function App() {
         </p>
       </div>
 
-      <div id="projets" className='mx-9 mb-5 md:mb-20'>
-        <h2 className='text-xl text-white font-bold separator-bottom relative pb-3 mb-5'>Projets</h2>
+      <div id="projets" className='mx-9 md:mx-32 mb-5 md:mb-32'>
+        <h2 className='text-xl md:text-3xl text-white font-bold separator-bottom relative pb-3 mb-5 md:mb-20'>Projets</h2>
         <div className='flex flex-col items-center mt-12'>
-          <Musique src={maquette} title="Mix1" description="mix1"/>
-          <Musique src={maquette2} title="Mix2" description="mix2"/>
-          <Musique src={maquette3} title="Mix3" description="mix3"/>
+          <Musique src={maquette} title="Mix1" description="mix1" musiqueActuelle={musiqueActuelle} setMusiqueActuelle={setMusiqueActuelle}/>
+          <Musique src={maquette2} title="Mix2" description="mix2" musiqueActuelle={musiqueActuelle} setMusiqueActuelle={setMusiqueActuelle}/>
+          <Musique src={maquette3} title="Mix3" description="mix3" musiqueActuelle={musiqueActuelle} setMusiqueActuelle={setMusiqueActuelle}/>
         </div>
       </div>
 
-      <div id="contact" className='mx-9'>
-        <h2 className='text-xl text-white font-bold separator-bottom relative pb-3 mb-5'>Contact</h2>
+      <div id="contact" className='mx-9 md:mx-32'>
+        <h2 className='text-xl md:text-3xl text-white font-bold separator-bottom relative pb-3 mb-5 md:mb-10'>Contact</h2>
         <div className='flex flex-col items-center mt-12'>
           <Contact/>
         </div>
       </div>
+
+      {musiqueActuelle != null && (
+                <audio id="audio" controls autoPlay className="w-9/12 mt-5 fixed bottom-0 right-0 left-0 ml-auto mr-auto mb-8">
+                    <source src={musiqueActuelle} type="audio/mpeg" />
+                </audio>
+            )}
       
     </div>
   );

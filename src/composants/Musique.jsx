@@ -1,21 +1,20 @@
 import React from "react";
 import { useState, useEffect } from "react";
 
-export default function Musique({src, title, description}) {
-    const [audioPlaying, setAudioPlaying] = useState(false);
+export default function Musique({src, title, description, musiqueActuelle , setMusiqueActuelle}) {
 
     function playAudio() {
-        setAudioPlaying(true);
+        setMusiqueActuelle(src);
     }
 
     function closeAudio(){
-        setAudioPlaying(false);
+        setMusiqueActuelle(null);
     }
 
     return(
         <div className="bg-[#212E43] p-5 rounded-md w-4/5 mb-8">
 
-            {audioPlaying ? (
+            {musiqueActuelle == src ? (
                 <div className="flex justify-end">
                     <button onClick={closeAudio}>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 text-sky-500">
@@ -41,11 +40,6 @@ export default function Musique({src, title, description}) {
                     Ecouter
                 </button>
             </div>
-            {audioPlaying && (
-                <audio id="audio" controls autoPlay className="w-9/12 mt-5 fixed bottom-0 right-0 left-0 ml-auto mr-auto mb-8">
-                    <source src={src} type="audio/mpeg" />
-                </audio>
-            )}
         </div>
     )
 }
