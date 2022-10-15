@@ -40,13 +40,13 @@ export default function Navbar() {
                     <div className="w-full md:block md:w-auto" id="navbar-default">
                         <ul className="flex flex-col items-center mt-4 rounded-lg text-white md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0">
                             <li className="hover:bg-[#1E1E1E] hover:md:bg-inherit w-full text-center">
-                                <a href="#" className="block py-4 pr-4 pl-3 md:hover:text-gray-400 md:p-0 md:text-lg md:mr-10 md:font-bold" aria-current="page">A propos</a>
+                                <a href="propos" className="block py-4 pr-4 pl-3 md:hover:text-gray-400 md:p-0 md:text-lg md:mr-10 md:font-bold" aria-current="page">A propos</a>
                             </li>
                             <li className="hover:bg-[#1E1E1E] hover:md:bg-inherit w-full text-center">
-                                <a href="#" className="block py-4 pr-4 pl-3 md:hover:text-gray-400 md:p-0 md:text-lg md:mr-10 md:font-bold">Projets</a>
+                                <a href="projets" className="block py-4 pr-4 pl-3 md:hover:text-gray-400 md:p-0 md:text-lg md:mr-10 md:font-bold">Projets</a>
                             </li>
                             <li className="hover:bg-[#1E1E1E] hover:md:bg-inherit w-full text-center ">
-                                <a href="#" className="block py-4 pr-4 pl-3 md:hover:text-gray-400 md:p-0 md:mr-10 md:text-lg md:font-bold">Contact</a>
+                                <a href="contact" className="block py-4 pr-4 pl-3 md:hover:text-gray-400 md:p-0 md:mr-10 md:text-lg md:font-bold">Contact</a>
                             </li>
                         </ul>
                     </div>) 
