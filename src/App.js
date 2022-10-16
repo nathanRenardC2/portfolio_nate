@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import React from 'react';
+import React, { useEffect } from 'react';
 import Navbar from './composants/Navbar';
 import Profil from './composants/Profil';
 import fiverr from './assets/fiverr.svg';
@@ -20,6 +20,15 @@ function App() {
 		[]
   )
 
+  useEffect(() => {
+    if(musiqueActuelle != null){
+      var audio = document.getElementById("audio");
+      audio.src = musiqueActuelle.src
+      audio.load()
+    }
+  }, [musiqueActuelle])
+
+
   return (
     <div className="bg-[#1E1E1E] h-full w-full">
       <header>
@@ -37,7 +46,7 @@ function App() {
       <div className='hidden md:flex justify-end md:mt-10'>
         <a href="https://fr.fiverr.com/" className='flex items-center bg-[#23395B] hover:bg-[#182942] px-5 py-2 rounded-lg mr-32'>
           <img alt='logo_fiverr' className='w-8 h-8' src={fiverr}/>
-          <span className='md:inline text-white font-extrabold ml-2'>Contact</span>
+          <span className='md:inline text-white font-extrabold ml-2'>Contact </span>
         </a>
       </div>
       <div id="propos" className='mx-9 md:mx-32 mb-5 md:mb-32 md:mt-20'>
@@ -54,9 +63,16 @@ function App() {
         <h2 className='text-xl md:text-3xl text-white font-bold separator-bottom relative pb-3 mb-5 md:mb-20'>Projets</h2>
         <div>
           <ul className='flex justify-center items-center'>
+            <li className='mr-3 ml-3'>
+              <button onClick={() => (
+                setActiveCategorie("Tout")
+              )} className='text-white bg-[#212E43] hover:bg-[#182942] p-5 rounded-lg font-bold'>Tout</button>
+            </li>
             {categories.map((categorie) => (
               <li key={categorie} className='mr-3 ml-3'>
-                <button className='text-white bg-[#212E43] hover:bg-[#182942] p-5 rounded-lg font-bold'>
+                <button onClick={() => (
+                  setActiveCategorie(categorie)
+                )} className='text-white bg-[#212E43] hover:bg-[#182942] p-5 rounded-lg font-bold'>
                   {categorie}
                 </button>
               </li>
@@ -64,7 +80,7 @@ function App() {
           </ul>
         </div>
         <div className='w-full flex flex-col items-center justify-center flex-wrap md:flex-row mt-12'>
-          {mix.map((mix) => (
+          {mix.filter((mix) => (activeCategorie === "Tout" || mix.categorie === activeCategorie )).map((mix) => (
             <Musique key={mix.id} id={mix.id} src={mix.src} title={mix.title} description={mix.description} musiqueActuelle={musiqueActuelle} setMusiqueActuelle={setMusiqueActuelle} />
           ))}
         </div>
@@ -79,7 +95,7 @@ function App() {
 
       {musiqueActuelle && (
                 <audio id="audio" controls autoPlay className="w-9/12 mt-5 fixed bottom-0 right-0 left-0 ml-auto mr-auto mb-8">
-                    <source src={musiqueActuelle.src} type="audio/mpeg" />
+                    <source src={musiqueActuelle.src} type="audio/mpeg"/>
                 </audio>
             )}
       

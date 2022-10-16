@@ -3,12 +3,12 @@ import { useState, useEffect } from "react";
 
 export default function Musique({id, src, title, description, musiqueActuelle , setMusiqueActuelle}) {
 
-    function playAudio() {
-        setMusiqueActuelle({
-            id: id,
-            title: title,
-            description: description,
-            src: src
+    async function playAudio() {
+        await setMusiqueActuelle({
+            id,
+            title,
+            description,
+            src
         })
     }
 
