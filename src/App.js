@@ -36,15 +36,15 @@ function App() {
       </header>
       <Profil/>
       <div className='flex justify-end h-36 md:hidden mt-3'>
-        <a href="https://fr.fiverr.com/" className='h-8 w-8 mr-3 rounded-full md:flex md:items-center md:bg-[#23395B] md:rounded-md md:mr-40 md:mt-5'>
+        <a href="https://fr.fiverr.com/nateraki" className='z-20 h-8 w-8 mr-3 rounded-full md:flex md:items-center md:bg-[#23395B] md:rounded-md md:mr-40 md:mt-5'>
           <img alt='logo_fiverr' className='rounded-full border-4 border-solid border-slate-300 border-opacity-20 md:border-0' src={fiverr}/>
         </a>
-        <a href="https://www.instagram.com/nateraki/?hl=fr" className='h-8 w-8 mr-5 rounded-full md:flex md:items-center md:bg-[#23395B] md:rounded-md md:mr-40 md:mt-5'>
+        <a href="https://www.instagram.com/nateraki/?hl=fr" className='z-20 h-8 w-8 mr-5 rounded-full md:flex md:items-center md:bg-[#23395B] md:rounded-md md:mr-40 md:mt-5'>
           <img alt='logo_instagram' className='rounded-full border-4 border-solid border-slate-300 border-opacity-20 md:border-0' src={instagram}/>
         </a>
       </div>
       <div className='hidden md:flex justify-end md:mt-10'>
-        <a href="https://fr.fiverr.com/" className='flex items-center bg-[#23395B] hover:bg-[#182942] px-5 py-2 rounded-lg mr-32'>
+        <a href="https://fr.fiverr.com/nateraki" className='flex items-center bg-[#23395B] hover:bg-[#182942] px-5 py-2 rounded-lg mr-32'>
           <img alt='logo_fiverr' className='w-8 h-8' src={fiverr}/>
           <span className='md:inline text-white font-extrabold ml-2'>Contact </span>
         </a>
@@ -62,17 +62,18 @@ function App() {
       <div id="projets" className='mx-9 md:mx-32 mb-5 md:mb-32'>
         <h2 className='text-xl md:text-3xl text-white font-bold separator-bottom relative pb-3 mb-5 md:mb-20'>Projets</h2>
         <div>
-          <ul className='flex justify-center items-center'>
-            <li className='mr-3 ml-3'>
+          <ul className='flex justify-center items-center flex-wrap'>
+            <li className="mr-3 ml-3 mt-5">
               <button onClick={() => (
                 setActiveCategorie("Tout")
-              )} className='text-white bg-[#212E43] hover:bg-[#182942] p-5 rounded-lg font-bold'>Tout</button>
+              )} className={`text-white bg-[#212E43] hover:bg-[#182942] p-5 rounded-lg font-bold ${activeCategorie === "Tout" && "bg-[#182942]"}`}>Tout</button>
             </li>
             {categories.map((categorie) => (
-              <li key={categorie} className='mr-3 ml-3'>
-                <button onClick={() => (
+              <li key={categorie} className='mr-3 ml-3 mt-5'>
+                <button onClick={() => {
                   setActiveCategorie(categorie)
-                )} className='text-white bg-[#212E43] hover:bg-[#182942] p-5 rounded-lg font-bold'>
+                  console.log(categorie)
+                }} className={`text-white bg-[#212E43] hover:bg-[#182942] p-5 rounded-lg font-bold ${activeCategorie === categorie && "bg-[#182942]"}`}>
                   {categorie}
                 </button>
               </li>
