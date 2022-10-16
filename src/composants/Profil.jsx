@@ -5,7 +5,7 @@ import ciel_rouge from '../assets/ciel_rouge.jpg';
 
 export default function Profil() {
     return(
-        <div className="relative w-full">
+        <div className="relative w-full mt-20 md:mt-0">
             <div className="h-32 md:h-52 overflow-hidden">
                 <img src={ciel} alt="bannière ciel" />
             </div>

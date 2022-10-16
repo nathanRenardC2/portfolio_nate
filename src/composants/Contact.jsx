@@ -23,7 +23,7 @@ export default function Contact() {
       };
 
     return(
-        <form ref={form} onSubmit={sendEmail} className="w-full max-w-sm mb-10">
+        <form ref={form} onSubmit={sendEmail} className="w-full max-w-2xl mb-10">
             <div className="flex items-center border-b border-slate-300 py-2 mb-5">
                 <input className="appearance-none bg-transparent border-none w-full text-white mr-3 py-1 px-2 leading-tight focus:outline-none font-semibold" type="text" placeholder="Pseudonyme *" name="user_pseudo"  aria-label="Full name" required="required"></input>
             </div>

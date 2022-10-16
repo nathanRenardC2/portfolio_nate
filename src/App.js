@@ -6,15 +6,19 @@ import Profil from './composants/Profil';
 import fiverr from './assets/fiverr.svg';
 import instagram from './assets/insta-logo.png';
 import Musique from './composants/Musique';
-import maquette from './assets/musique/maquette.mp3';
-import maquette2 from './assets/musique/maquette2.mp3';
-import maquette3 from './assets/musique/maquette3.mp3';
 import Contact from './composants/Contact';
+import {mix} from './datas/mix.js';
 import { useState } from "react";
 
 function App() {
 
   const [musiqueActuelle, setMusiqueActuelle] = useState(null);
+  const [activeCategorie, setActiveCategorie] = useState("Tout");
+  const categories = mix.reduce(
+    (acc, mix) =>
+			acc.includes(mix.categorie) ? acc : acc.concat(mix.categorie),
+		[]
+  )
 
   return (
     <div className="bg-[#1E1E1E] h-full w-full">
@@ -24,15 +28,15 @@ function App() {
       <Profil/>
       <div className='flex justify-end h-36 md:hidden mt-3'>
         <a href="https://fr.fiverr.com/" className='h-8 w-8 mr-3 rounded-full md:flex md:items-center md:bg-[#23395B] md:rounded-md md:mr-40 md:mt-5'>
-          <img className='rounded-full border-4 border-solid border-slate-300 border-opacity-20 md:border-0' src={fiverr}/>
+          <img alt='logo_fiverr' className='rounded-full border-4 border-solid border-slate-300 border-opacity-20 md:border-0' src={fiverr}/>
         </a>
         <a href="https://www.instagram.com/nateraki/?hl=fr" className='h-8 w-8 mr-5 rounded-full md:flex md:items-center md:bg-[#23395B] md:rounded-md md:mr-40 md:mt-5'>
-          <img className='rounded-full border-4 border-solid border-slate-300 border-opacity-20 md:border-0' src={instagram}/>
+          <img alt='logo_instagram' className='rounded-full border-4 border-solid border-slate-300 border-opacity-20 md:border-0' src={instagram}/>
         </a>
       </div>
       <div className='hidden md:flex justify-end md:mt-10'>
         <a href="https://fr.fiverr.com/" className='flex items-center bg-[#23395B] hover:bg-[#182942] px-5 py-2 rounded-lg mr-32'>
-          <img className='w-8 h-8' src={fiverr}/>
+          <img alt='logo_fiverr' className='w-8 h-8' src={fiverr}/>
           <span className='md:inline text-white font-extrabold ml-2'>Contact</span>
         </a>
       </div>
@@ -48,10 +52,21 @@ function App() {
 
       <div id="projets" className='mx-9 md:mx-32 mb-5 md:mb-32'>
         <h2 className='text-xl md:text-3xl text-white font-bold separator-bottom relative pb-3 mb-5 md:mb-20'>Projets</h2>
-        <div className='flex flex-col md:flex-row items-center mt-12'>
-          <Musique src={maquette} title="Mix1" description="mix1" musiqueActuelle={musiqueActuelle} setMusiqueActuelle={setMusiqueActuelle}/>
-          <Musique src={maquette2} title="Mix2" description="mix2" musiqueActuelle={musiqueActuelle} setMusiqueActuelle={setMusiqueActuelle}/>
-          <Musique src={maquette3} title="Mix3" description="mix3" musiqueActuelle={musiqueActuelle} setMusiqueActuelle={setMusiqueActuelle}/>
+        <div>
+          <ul className='flex justify-center items-center'>
+            {categories.map((categorie) => (
+              <li key={categorie} className='mr-3 ml-3'>
+                <button className='text-white bg-[#212E43] hover:bg-[#182942] p-5 rounded-lg font-bold'>
+                  {categorie}
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className='w-full flex flex-col items-center justify-center flex-wrap md:flex-row mt-12'>
+          {mix.map((mix) => (
+            <Musique key={mix.id} id={mix.id} src={mix.src} title={mix.title} description={mix.description} musiqueActuelle={musiqueActuelle} setMusiqueActuelle={setMusiqueActuelle} />
+          ))}
         </div>
       </div>
 
@@ -62,9 +77,9 @@ function App() {
         </div>
       </div>
 
-      {musiqueActuelle != null && (
+      {musiqueActuelle && (
                 <audio id="audio" controls autoPlay className="w-9/12 mt-5 fixed bottom-0 right-0 left-0 ml-auto mr-auto mb-8">
-                    <source src={musiqueActuelle} type="audio/mpeg" />
+                    <source src={musiqueActuelle.src} type="audio/mpeg" />
                 </audio>
             )}
       
